@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Agarkar - Digital Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#3b82f6',
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        
+        .profile-ring { animation: pulse-ring 3s infinite; }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Card -->
+    <div class="w-full max-w-md bg-card rounded-3xl shadow-2xl overflow-hidden border border-slate-700 relative">
+        
+        <!-- Header Banner -->
+        <div class="h-32 bg-gradient-to-r from-blue-600 to-indigo-600 relative">
+            <button onclick="shareCard()" class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white/30 transition text-white z-10">
+                <i class="fa-solid fa-share-nodes text-lg w-6 h-6 flex items-center justify-center"></i>
+            </button>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="px-6 relative">
+            
+            <!-- Profile Image Area -->
+            <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 z-10">
+                <div class="relative">
+                    <!-- 
+                       REVERTED TO LOCAL FILE:
+                       Ensure 'Rohan.jpg' is in the same folder as this file.
+                    -->
+                    <img id="profile-img" 
+                         src="Rohan.png" 
+                         onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Rohan'"
+                         alt="Rohan Agarkar" 
+                         class="w-32 h-32 rounded-full border-4 border-card bg-white object-cover object-top profile-ring shadow-lg">
+                    <div class="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-card rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Name & Title -->
+            <div class="pt-24 pb-2 text-center relative z-0">
+                <h1 class="text-2xl font-bold text-white tracking-tight">Rohan Agarkar</h1>
+                <p class="text-blue-400 font-medium text-sm mt-1">Professional / Developer</p>
+                <p class="text-slate-400 text-xs mt-3 px-4 leading-relaxed">Helping businesses scale with modern tech solutions and creative design.</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4 justify-center mt-6">
+                <a href="tel:+919574190002" class="flex-1 bg-slate-700 hover:bg-slate-600 transition py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold">
+                    <i class="fa-solid fa-phone text-blue-400"></i> Call
+                </a>
+                <a href="mailto:rohanagarkar28@.com" class="flex-1 bg-slate-700 hover:bg-slate-600 transition py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold">
+                    <i class="fa-solid fa-envelope text-blue-400"></i> Email
+                </a>
+            </div>
+
+            <!-- Save Contact -->
+            <button onclick="downloadVCard()" class="w-full mt-4 bg-blue-600 hover:bg-blue-500 transition py-4 rounded-xl flex items-center justify-center gap-2 font-bold shadow-lg shadow-blue-900/50">
+                <i class="fa-solid fa-user-plus"></i> Save to Contacts
+            </button>
+
+            <!-- Social Links -->
+            <div class="mt-8 space-y-3 mb-8">
+                <a href="https://linkedin.com/in/rohan-agarkar" class="block bg-slate-700/50 hover:bg-slate-700 transition p-4 rounded-xl flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-900/50 flex items-center justify-center text-blue-400">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </div>
+                        <span class="font-medium">LinkedIn Profile</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
+                </a>
+
+                <a href="https://wa.me/919574190002" class="block bg-slate-700/50 hover:bg-slate-700 transition p-4 rounded-xl flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-900/50 flex items-center justify-center text-green-400">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </div>
+                        <span class="font-medium">WhatsApp Me</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-500 group-hover:text-white transition"></i>
+                </a>
+            </div>
+            
+            <!-- QR Code -->
+            <div class="text-center pb-8">
+                <p class="text-slate-500 text-xs uppercase tracking-widest mb-4">Scan to Connect</p>
+                <div class="bg-white p-2 rounded-xl inline-block shadow-lg">
+                    <img id="qr-code" src="" alt="QR Code" class="w-32 h-32">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl border border-slate-600 opacity-0 transition-opacity duration-300 pointer-events-none z-50 flex items-center gap-2">
+        <i class="fa-solid fa-check-circle text-green-400"></i>
+        <span id="toast-msg">Action Successful</span>
+    </div>
+
+    <script>
+        const contactInfo = {
+            firstName: "Rohan",
+            lastName: "Agarkar",
+            mobile: "+919574190002",
+            email: "rohanagarkar28@gmail@.com",
+            company: "",
+            jobTitle: "Developer",
+            address: "Vadodara, Gujarat, India"
+        };
+
+        window.onload = function() {
+            // Generate QR Code
+            const url = window.location.href;
+            document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+        };
+
+        async function shareCard() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: `${contactInfo.firstName} ${contactInfo.lastName}`,
+                        text: `Connect with ${contactInfo.firstName}`,
+                        url: window.location.href
+                    });
+                } catch (err) { console.log(err); }
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast("Link copied!");
+            }
+        }
+
+        function downloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:${contactInfo.lastName};${contactInfo.firstName};;;
+FN:${contactInfo.firstName} ${contactInfo.lastName}
+ORG:${contactInfo.company}
+TITLE:${contactInfo.jobTitle}
+TEL;TYPE=CELL:${contactInfo.mobile}
+EMAIL;TYPE=WORK,INTERNET:${contactInfo.email}
+ADR;TYPE=WORK:;;${contactInfo.address}
+END:VCARD`;
+
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const newLink = document.createElement('a');
+            newLink.download = `${contactInfo.firstName}_${contactInfo.lastName}.vcf`;
+            newLink.href = url;
+            newLink.click();
+            showToast("Downloading contact...");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = message;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 3000);
+        }
+    </script>
+</body>
+</html>
